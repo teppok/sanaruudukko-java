@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Sanaruudukko</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+
+<!--		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/chat.js"></script>
+<script type="text/javascript" src="js/roomlist.js"></script>
+<script type="text/javascript" src="js/allwords.js"></script>
+
+
+</head>
+<body>
+	<div id="help">
+		<span id="helplink"><a href="#" onclick="showhidehelp();">Säännöt</a></span>
+		<div id="helpinfo">
+			<!--
+				1) First choose a name and a room number.
+				<br>
+				2) Enter words so that letters are connected in the grid and you can use a letter only once. 
+				You can't enter new words if the round has ended.
+				<br>
+				3) All words that fit the grid are accepted, regardless whether they are real or not.
+				<br>
+				4) All players present in the room must click new round before a new round is started. If
+				someone goes afk the game can't proceed so reload the page and choose a new room.
+				<br>
+				5) Irc or similar chat between participants is suggested for settling disputes etc.
+				Chat feature will be added in the future.
+				<br>
+				6) At the moment the program has no security features to protect players from other players,
+				so there is a possibility of harassment. Play nice.
+				-->
+			<ol>
+				<li>Syötä sanoja, niin että kirjaimet ovat ruudukossa kiinni
+					toisissaan ja kirjainta saa käyttää vain kerran. Sanoja ei voi
+					syöttää, kun kierros on päättynyt.</li>
+				<li>Kaikki sanat, jotka löytyvät ruudukosta, kirjataan ylös.
+					Kierrostauoilla on pelaajien tehtävänä päättää, mitkä sanoista
+					voidaan hyväksyä ja mitkä pitää poistaa. Säännöiksi voidaan päättää
+					esim., että perusmuotoiset suomen kielen sanat tai niiden monikot
+					käyvät. Kielitoimiston suppeasta nykysuomen sanastosta löytyvien
+					tällaisten sanojen perässä on apuna vihreä merkki.</li>
+				<li>Pisteitä ei saa sanoista, jotka jollakin muulla samassa
+					huoneessa olijalla. Pidemmistä sanoista saa enemmän pisteitä.</li>
+				<li>Kun kierros on päättynyt, kaikkien huoneessa olijoiden on
+					klikattava uusi kierros -nappia, että uusi kierros alkaisi. Uutta
+					kierrosta odottavien nimet näkyvät vihreällä. Jos joku pelaajista
+					on poistunut koneelta, uusi kierros ei voi alkaa, joten muiden
+					pitää poistua huoneesta ja valita uusi huone.</li>
+			</ol>
+		</div>
+	</div>
+	<div id="titlescreen">
+		<div id="title">SANARUUDUKKO</div>
+		<div id="registerform">
+			<form name="registerform" onsubmit="return false;" action="#">
+				Syötä nimesi. Sallitut merkit ovat isot ja pienet aakkoset ja
+				numerot, enintään 16 merkkiä:<br /> <input type="text"
+					onkeyup='if (event.keyCode == 13) { setPlayer(); }' name="name" />
+				<br /> Anna tunnussana itsellesi. Merkkirajoitukset kuten nimessä.
+				(Jos et ole vielä pelannut kertaakaan, valitse mikä tahansa ja paina
+				se mieleen. älä käytä tunnussanana mitään tärkeää):<br /> <input
+					type="text" onkeyup='if (event.keyCode == 13) { setPlayer(); }'
+					value="" name="passcode" /> <br />
+			</form>
+			<div id="warning"></div>
+			<div>Huom: Peli saattaa joskus hieman tahmata. Tämä johtuu
+				tietoliikenneyhteyksistä pelin halpisserverille.</div>
+			<div id="helpcopy"></div>
+		</div>
+	</div>
+	<div id="roomform">
+		<div id="roomlist">-</div>
+		<form name="roomform" onsubmit="return false;" action="#">
+			<input type="button" name="round" value="Päivitä lista"
+				onclick="initRoomList();" /><br /> Valitse huone listalta tai luo
+			uusi huone nimellä. Nimi saa sisältää isoja ja pieniä aakkosia sekä
+			numeroita, enintään 16 merkkiä:<br /> <input type="text"
+				onkeyup='if (event.keyCode == 13) { newroom(); }' value=""
+				name="roomname" />
+			<div id="warning2"></div>
+		</form>
+	</div>
+	<div id="playarea">
+		<form name="myForm" onsubmit="return false;" action="#">
+			<div id="upperarea">
+				<div id="roomnumber"></div>
+				<div id="boardarea">
+					<table class="board">
+						<tr>
+							<td id="lett1" class="cell">?</TD>
+							<TD id="lett2" class="cell">?</TD>
+							<TD id="lett3" class="cell">?</TD>
+							<TD id="lett4" class="cell">?</TD>
+						</TR>
+						<tr>
+							<td id="lett5" class="cell">?</TD>
+							<TD id="lett6" class="cell">?</TD>
+							<TD id="lett7" class="cell">?</TD>
+							<TD id="lett8" class="cell">?</TD>
+						</TR>
+						<tr>
+							<td id="lett9" class="cell">?</TD>
+							<TD id="lett10" class="cell">?</TD>
+							<TD id="lett11" class="cell">?</TD>
+							<TD id="lett12" class="cell">?</TD>
+						</TR>
+						<tr>
+							<td id="lett13" class="cell">?</TD>
+							<TD id="lett14" class="cell">?</TD>
+							<TD id="lett15" class="cell">?</TD>
+							<TD id="lett16" class="cell">?</TD>
+						</TR>
+					</TABLE>
+					<div id="time">(Kierros päättynyt)</div>
+				</div>
+				<div id="formarea">
+					<input type="button" name="round" value="Uusi kierros"
+						onclick="newRound();" /><br /> <input type="button" name="leave"
+						value="Poistu huoneesta" onclick="leaveRoom();" /><br /> <input
+						type="button" style="width: 210px;" name="showhide"
+						value="Näytä kaikki mahdollisuudet" onclick="showhideallwords();" />
+				</div>
+				<div id="chatarea">
+					Huone-chat:
+					<div id="chatbox">
+						<div id="inchatbox"></div>
+					</div>
+					<input type="text"
+						onkeyup='if (event.keyCode == 13) { submitChat(); }' value=""
+						name="chat" />
+				</div>
+			</div>
+			<div id="playerarea">
+				<!--					<div id="allwordsblock">-->
+				<div id="allwords">Kierros on kesken.</div>
+				<!--					</div>-->
+
+				<div id="ownarea">
+					<div id="ownframecontainer">
+						<div class="playerframe"></div>
+					</div>
+					<div id="wordarea">
+						<input type='text'
+							onkeydown='if (event.keyCode == 13) { submitWord(); }'
+							name='word' />
+					</div>
+				</div>
+				<div id='players'></div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+            var _gaq=[['_setAccount','UA-37644492-1'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="pu" transaction-type="JTA">
+		<jta-data-source>jdbc/sanaruudukkodb</jta-data-source>
+		<class>fi.iki.photon.sanaruudukko.entity.Player</class>
+		<class>fi.iki.photon.sanaruudukko.entity.Room</class>
+		<class>fi.iki.photon.sanaruudukko.entity.Round</class>
+		<class>fi.iki.photon.sanaruudukko.entity.Word</class>
+		<class>fi.iki.photon.sanaruudukko.entity.ChatLine</class>
+		<class>fi.iki.photon.sanaruudukko.entity.ValidWord</class>
+		<class>fi.iki.photon.sanaruudukko.entity.WordList</class>
+
+		<!--
+			Uncomment one of the following to enable a non-default JPA provider
+		-->
+		<!--
+			<provider>org.hibernate.ejb.HibernatePersistence</provider>
+			<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		-->
+
+
+		<!--
+			Glassfish Default Datasource
+			<jta-data-source>jdbc/__default</jta-data-source>
+		-->
+
+		<!--
+			JBoss Default Datasource
+			<jta-data-source>java:/DefaultDS</jta-data-source>
+		-->
+
+		<properties>
+			<!-- Properties for Hibernate (default provider for JBoss AS) -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.transaction.flush_before_completion"
+				value="true" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+
+			<!-- Properties for EclipseLink (default provider for GlassFish)  drop-and-create-tables -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.logging.level" value="FINE" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

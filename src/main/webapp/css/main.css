@@ -1,0 +1,512 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+#title {
+	text-align: center;
+	font-size: 50px;
+	letter-spacing: 4px;
+	font-family: Helvetica, sans-serif;
+}
+
+#help {
+	position: absolute;
+	float: left;
+	z-index: 2;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	max-width: 400px;
+	-moz-box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0 #CCCCCC;
+	-webkit-box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0
+		#CCCCCC;
+	box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0 #CCCCCC;
+}
+
+#helpinfo {
+	display: none;
+}
+
+#allwordsblock {
+	float: left;
+	position: relative;
+}
+
+#allwords {
+	position: absolute;
+	top: 40px;
+	left: 40px;
+	z-index: 2;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	display: none;
+	-moz-box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0 #CCCCCC;
+	-webkit-box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0
+		#CCCCCC;
+	box-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC, 3px 3px 0 #CCCCCC;
+	width: 600px;
+}
+
+#closebutton {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.allwordlist {
+	float: left;
+}
+
+#registerform {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	z-index: 1;
+	padding-top: 25px;
+}
+
+#roomform {
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	z-index: 1;
+	padding-top: 25px;
+}
+
+/* #boardarea { margin-left: auto; margin-right: auto; text-align:center; width: 200px; } */
+/* #upperarea{ width: 600px; margin-left: auto; margin-right: auto; } */
+#upperarea {
+	padding-left: 25px;
+	padding-top: 30px;
+	float: left;
+}
+
+#roomnumber {
+	text-align: center;
+}
+
+#boardarea {
+	margin-left: auto;
+	margin-right: auto;
+	width: 140px;
+	padding-top: 10px;
+}
+
+.cell {
+	text-align: center;
+	height: 30px;
+	width: 30px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#time {
+	text-align: center;
+	padding-top: 10px;
+}
+
+#formarea {
+	text-align: center;
+	padding-top: 15px;
+}
+/*margin-left: auto; margin-right: auto; text-align: center; width: 200px; } */
+/* #playerarea { clear: left; margin-left: auto; margin-right: auto; width: 1100px; text-align: center; min-height: 400px; } */
+#chatarea {
+	padding-top: 10px;
+}
+
+#chatbox {
+	height: 200px;
+	width: 200px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: auto;
+	/*  overflow-x: hidden;
+  -ms-overflow-x: hidden; */
+}
+
+#extchatbox {
+	width: 200px;
+}
+
+#inchatbox {
+	
+}
+
+#playarea {
+	display: none;
+}
+
+#playerarea {
+	position: relative;
+	padding-left: 25px;
+	padding-top: 25px;
+	float: left;
+	text-align: center;
+	min-height: 250px;
+}
+
+#ownarea {
+	float: left;
+	clear: both;
+	width: 202px;
+}
+
+#ownframecontainer {
+	
+}
+
+#wordarea {
+	height: 30px;
+}
+
+.playerframe {
+	float: left;
+	width: 100%;
+	min-height: 220px;
+	background-color: #EEEEEE;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-width: 1px;
+}
+/*#players { float: left; border-style: solid; border-width: 1px; width: 800px; min-height: 400px; background-color: #BBBBBB; } */
+#players {
+	float: left;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-width: 1px;
+	/*	margin-left: -1px; */
+	/*	margin-right: -1px; 
+	margin-bottom: -1px; */
+	/*	min-height: 250px; */
+	background-color: #BBBBBB;
+	display: none;
+}
+
+.otherplayerframe {
+	float: left;
+	width: 201px;
+	min-height: 251px;
+	background-color: #EEEEEE;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-width: 1px;
+	margin-left: -1px;
+	margin-top: -1px;
+}
+
+.otherplayerframerow {
+	clear: both;
+	float: left;
+	width: 200px;
+	min-height: 250px;
+	background-color: #EEEEEE;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-style: solid;
+	border-left-style: solid;
+	border-width: 1px;
+	margin-left: -1px;
+	margin-top: -1px;
+}
+
+.playername {
+	border-bottom-style: solid;
+	border-width: 1px;
+	height: 65px;
+}
+/* .wordrow { height: 21px; clear: both; } */
+.wordlist {
+	
+}
+
+#ownwordlistcontainer {
+	overflow: auto;
+	overflow-x: hidden;
+	-ms-overflow-x: hidden;
+	max-height: 600px;
+}
+
+.wordrow {
+	clear: both;
+}
+
+.duplicateword {
+	text-decoration: line-through;
+}
+
+.disabledword {
+	color: gray;
+}
+
+.delete {
+	float: left;
+}
+/*.points { float:right; border-style: solid; border-width: 1px; display:inline; height: 18px; }*/
+.points {
+	float: right;
+	display: inline;
+}
+
+.inactive {
+	color: #999999;
+}
+
+.ready {
+	color: #00AA00;
+	font-weight: bold;
+}
+
+.moretime {
+	color: #6588FF;
+	font-weight: bold;
+}
+
+html,button,input,select,textarea {
+	color: #222;
+}
+
+body {
+	font-size: 1em;
+	line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+/*
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+*/
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+img {
+	vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+	resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+.chromeframe {
+	margin: 0.2em 0;
+	background: #ccc;
+	color: #000;
+	padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+.ir {
+	background-color: transparent;
+	border: 0;
+	overflow: hidden;
+	/* IE 6/7 fallback */
+	*text-indent: -9999px;
+}
+
+.ir:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 100%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+/*
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+*/
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+	visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,.clearfix:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+	*zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+	/* Style adjustments for viewports that meet the condition */
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) , only
+	screen and (min-resolution: 144dpi) {
+	/* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+	* {
+		background: transparent !important;
+		color: #000 !important; /* Black prints faster: h5bp.com/s */
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	a,a:visited {
+		text-decoration: underline;
+	}
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/*
+     * Don't show links for images, or javascript/internal links
+     */
+	.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after {
+		content: "";
+	}
+	pre,blockquote {
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+	thead {
+		display: table-header-group; /* h5bp.com/t */
+	}
+	tr,img {
+		page-break-inside: avoid;
+	}
+	img {
+		max-width: 100% !important;
+	}
+	@page {
+		margin: 0.5cm;
+	}
+	p,h2,h3 {
+		orphans: 3;
+		widows: 3;
+	}
+	h2,h3 {
+		page-break-after: avoid;
+	}
+}
