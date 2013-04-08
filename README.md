@@ -51,6 +51,6 @@ AsyncManager.java:
   give them the room info and they can see the board.
   
   
-Technology keywords: Java EE 6, EJB, JAX-RS, JPA, JTA.
+Technology keywords: Java EE 6, EJB, JAX-RS, JPA, JTA, JMS, Long-poll AJAX.
 
  
