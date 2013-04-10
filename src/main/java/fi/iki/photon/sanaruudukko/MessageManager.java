@@ -46,6 +46,7 @@ public class MessageManager {
             
             ts.createProducer(topic).send(message);
 
+            topicConnection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
