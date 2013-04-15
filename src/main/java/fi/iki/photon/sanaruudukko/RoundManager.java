@@ -158,7 +158,7 @@ public class RoundManager {
      * @return true if a new round was started.
      */
     
-    public boolean newRound(@NonNull Room roomItem, @Nullable Round roundItem, @NonNull Player playerItem) {
+    public synchronized boolean newRound(@NonNull Room roomItem, @Nullable Round roundItem, @NonNull Player playerItem) {
         System.out.println("newround");
         if (roundContinues(roundItem)) return false;
         

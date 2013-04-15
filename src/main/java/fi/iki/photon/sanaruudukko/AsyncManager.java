@@ -12,6 +12,7 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.LockModeType;
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
@@ -90,16 +91,19 @@ public class AsyncManager {
             try {
                 tx.begin();
 
-                final Round ro = em.find(Round.class, Integer.valueOf(roundId));
+                final Round ro = em.find(Round.class, Integer.valueOf(roundId), LockModeType.OPTIMISTIC);
 
                 if (ro.getRoundStart().before(new Date())) {
                     newRoundStarted = true;
                 }
                 tx.commit();
-            } catch (SecurityException | IllegalStateException
-                    | RollbackException | HeuristicMixedException
-                    | HeuristicRollbackException | SystemException
-                    | NotSupportedException e1) {
+            } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SystemException | SecurityException | IllegalStateException e1 ) {
+                try {
+                    tx.rollback();
+                } catch (IllegalStateException | SecurityException
+                        | SystemException e) {
+                    e.printStackTrace();
+                }
                 e1.printStackTrace();
             }
 

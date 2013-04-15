@@ -213,12 +213,14 @@ public class Sanaruudukko {
             System.out.println(result);
             return xmlReply("<data>" + result + "</data>");
 
-        } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException e1) {
+        } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SystemException | SecurityException | IllegalStateException e1 ) {
+            try {
+                tx.rollback();
+            } catch (IllegalStateException | SecurityException
+                    | SystemException e) {
+                e.printStackTrace();
+            }
             e1.printStackTrace();
-        } catch (SystemException e1) {
-            e1.printStackTrace();
-        } catch (SecurityException | IllegalStateException e) {
-            e.printStackTrace();
         }
         return xmlReply("");
     }
@@ -479,20 +481,14 @@ public class Sanaruudukko {
             String result = "<data>" + roundInfo + wordInfo + chatInfo + "</data>";
             System.out.println(result);
             return xmlReply(result);
-        } catch (NotSupportedException e1) {
+        } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SystemException | SecurityException | IllegalStateException e1 ) {
+            try {
+                tx.rollback();
+            } catch (IllegalStateException | SecurityException
+                    | SystemException e) {
+                e.printStackTrace();
+            }
             e1.printStackTrace();
-        } catch (SystemException e1) {
-            e1.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (RollbackException e) {
-            e.printStackTrace();
-        } catch (HeuristicMixedException e) {
-            e.printStackTrace();
-        } catch (HeuristicRollbackException e) {
-            e.printStackTrace();
         }
         
         return xmlReply("");
@@ -555,20 +551,14 @@ public class Sanaruudukko {
             
             return xmlReply(result);
 
-        } catch (NotSupportedException e1) {
+        } catch (NotSupportedException | RollbackException | HeuristicMixedException | HeuristicRollbackException | SystemException | SecurityException | IllegalStateException e1 ) {
+            try {
+                tx.rollback();
+            } catch (IllegalStateException | SecurityException
+                    | SystemException e) {
+                e.printStackTrace();
+            }
             e1.printStackTrace();
-        } catch (SystemException e1) {
-            e1.printStackTrace();
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (RollbackException e) {
-            e.printStackTrace();
-        } catch (HeuristicMixedException e) {
-            e.printStackTrace();
-        } catch (HeuristicRollbackException e) {
-            e.printStackTrace();
         }
 
         return xmlReply("");
